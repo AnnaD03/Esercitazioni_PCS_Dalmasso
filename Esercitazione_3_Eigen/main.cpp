@@ -27,7 +27,7 @@ VectorXd sol_QR(const MatrixXd &A, const VectorXd &b)
 		cerr << "La matrice è singolare" << endl;
 	}
 	else{
-		VectorXd sol_QR = A.householderQr().solve(b);
+		sol_QR = A.householderQr().solve(b);
 	}
 	return sol_QR;
 }
@@ -57,13 +57,13 @@ int main()
 	
 	solPALU = sol_PALU(A1, b1);
 	cout << "Risoluzione con PALU" << endl;
-	cout << "Soluzione: \n" << scientific << setprecision(16) << solPALU << endl;
-	cout << "Errore relativo: " << scientific << setprecision(16) << err_rel(solPALU, x_ex) << endl;
+	cout << "Soluzione: \n" << scientific << setprecision(15) << solPALU << endl;
+	cout << "Errore relativo: " << scientific << setprecision(15) << err_rel(solPALU, x_ex) << endl;
 	
 	solQR = sol_QR(A1, b1);
 	cout << "Risoluzione con QR" << endl;
-	cout << "Soluzione: \n" << scientific << setprecision(16) << solQR << endl;
-	cout << "Errore relativo: " << scientific << setprecision(16) << err_rel(solQR, x_ex) << endl;
+	cout << "Soluzione: \n" << scientific << setprecision(15) << solQR << endl;
+	cout << "Errore relativo: " << scientific << setprecision(15) << err_rel(solQR, x_ex) << endl;
 	
 	
 	cout << "Sistema 2" << endl;
@@ -77,13 +77,13 @@ int main()
 	
 	solPALU = sol_PALU(A2, b2);
 	cout << "Risoluzione con PALU" << endl;
-	cout << "Soluzione: \n" << scientific << setprecision(16) << solPALU << endl;
-	cout << "Errore relativo: " << scientific << setprecision(16) << err_rel(solPALU, x_ex) << endl;
+	cout << "Soluzione: \n" << scientific << setprecision(15) << solPALU << endl;
+	cout << "Errore relativo: " << scientific << setprecision(15) << err_rel(solPALU, x_ex) << endl;
 	
 	solQR = sol_QR(A2, b2);
 	cout << "Risoluzione con QR" << endl;
-	cout << "Soluzione: \n" << scientific << setprecision(16) << solQR << endl;
-	cout << "Errore relativo: " << scientific << setprecision(16) << err_rel(solQR, x_ex) << endl;
+	cout << "Soluzione: \n" << scientific << setprecision(15) << solQR << endl;
+	cout << "Errore relativo: " << scientific << setprecision(15) << err_rel(solQR, x_ex) << endl;
 	
 	
 	cout << "Sistema 3" << endl;
@@ -97,13 +97,13 @@ int main()
 	
 	solPALU = sol_PALU(A3, b3);
 	cout << "Risoluzione con PALU" << endl;
-	cout << "Soluzione: \n" << scientific << setprecision(16) << solPALU << endl;
-	cout << "Errore relativo: " << scientific << setprecision(16) << err_rel(solPALU, x_ex) << endl;
+	cout << "Soluzione: \n" << scientific << setprecision(15) << solPALU << endl;
+	cout << "Errore relativo: " << scientific << setprecision(15) << err_rel(solPALU, x_ex) << endl;
 		
 	solQR = sol_QR(A3, b3);
 	cout << "Risoluzione con QR" << endl;
-	cout << "Soluzione: \n" << scientific << setprecision(16) << solQR << endl;
-	cout << "Errore relativo: " << scientific << setprecision(16) << err_rel(solQR, x_ex) << endl;
+	cout << "Soluzione: \n" << scientific << setprecision(15) << solQR << endl;
+	cout << "Errore relativo: " << scientific << setprecision(15) << err_rel(solQR, x_ex) << endl;
 		
 	
     return 0;
