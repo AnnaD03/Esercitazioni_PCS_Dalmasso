@@ -3,13 +3,13 @@
 #include <sstream>
 #include <iomanip>
 #include "src/Utils.hpp"
-// #include "ClassObj.hpp" // error if pragma once is not used in ClassObj
 
 using namespace std;
 
 int main()
 {
     string inputFileName = "./data.txt";
+	string outputFileName = "./result.txt";
     size_t n = 0;
 	double S = 0.0;
 	double V = 0.0;
@@ -18,7 +18,7 @@ int main()
 
     if (!ImportVectors(inputFileName, S, n, w, r, V))
     {
-        cerr << "Something goes wrong with import"<< endl;
+        cerr << "Errore nell'esportazione del file" << endl;
         return -1;
     }
     else
@@ -34,14 +34,13 @@ int main()
 		cout << "V: " << fixed << setprecision(2) << V << endl;
 
 
-    string outputFileName = "./result.txt";
     if (!ExportResult(outputFileName, S, n, w, r, dotProduct, V))
     {
-        cerr << "Something goes wrong with export" << endl;
+        cerr << "Errore nell'esportazione del file" << endl;
         return -1;
     }
     else
-        cout << "File esportato correttamente" << endl;
+        cout << "File 'result' esportato correttamente" << endl;
 
     delete[] w;
     delete[] r;

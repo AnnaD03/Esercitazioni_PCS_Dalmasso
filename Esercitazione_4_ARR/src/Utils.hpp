@@ -1,12 +1,8 @@
 #pragma once
 
-
-//#include "ClassObj.hpp"
 #include <iostream>
 
 using namespace std;
-
-//int foo(ClassObj obj);
 
 
 double DotProduct(const size_t& n, const double* const& v1, const double* const& v2);
