@@ -52,7 +52,7 @@ bool ImportVectors(const string& inputFilePath, double& S, size_t& n, double*& w
 		convertVal.ignore(); //si ignora il ';'		
 		convertVal >> r[i]; //la sottostringa dopo al ';' viene assegnata all'elemento i-esimo di r
         
-		V += (1 + r[i]) * (S * w[i]); //aggiornamento del valore del portfolio
+		V += (1 + r[i]) * (S * w[i]); //aggiornamento del valore del portfolio (V = (1 + r) * S)
     }
 
     //chiusura file
