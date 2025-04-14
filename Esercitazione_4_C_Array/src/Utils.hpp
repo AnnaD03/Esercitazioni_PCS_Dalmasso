@@ -8,8 +8,8 @@ using namespace std;
 	- inputFilePath: percorso del file in input
 	- S: valore iniziale investito
 	- n: dimensione dei vettori
-	- w: frazione di S investita
-	- r: tasso di rendimento di ogni investimento 
+	- w: vettore con le frazioni di S investite
+	- r: vettore con i tassi di rendimento di ogni investimento 
 	- V: valore finale del portfolio
 	- nomi: nomi delle variabili, letti nel file in input */
 bool ImportVectors(const string& inputFilePath, double& S, size_t& n, double*& w, double*& r, double& V, 
@@ -19,8 +19,8 @@ bool ImportVectors(const string& inputFilePath, double& S, size_t& n, double*& w
 	- outputFilePath: percorso del file in output
 	- S: valore iniziale investito
 	- n: dimensione dei vettori
-	- w: frazione di S investita
-	- r: tasso di rendimento di ogni investimento
+	- w: vettore con le frazioni di S investite
+	- r: vettore con i tassi di rendimento di ogni investimento
 	- dotProduct: tasso di rendimento calcolato
 	- V: valore finale del portfolio
 	- nomi: nomi delle variabili, letti nel file in input */					
