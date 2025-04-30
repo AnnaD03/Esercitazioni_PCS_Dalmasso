@@ -16,6 +16,8 @@ int main()
         cerr << "file non trovato" << endl;
         return 1;
     }
+	else
+		cout << "Mesh importata correttamente" << endl;
 	
 	Gedim::UCDUtilities utilities;
     {

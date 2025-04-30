@@ -11,13 +11,13 @@ bool ImportMesh(PolygonalMesh& mesh)
     if(!ImportCell0Ds(mesh))
         return false;
 	else{
-		cout << "Cell0D marker:" << endl;
+		cout << "Marker Cell0D:" << endl;
 		if (mesh.MarkerCell0Ds.size() != 0){
 			for(auto it = mesh.MarkerCell0Ds.begin(); it != mesh.MarkerCell0Ds.end(); it++)
 			{
 				cout << "Marker id: " << it -> first << "\t" << "Valori: ";
 				for(const unsigned int id : it -> second)
-					cout << id << "\t";
+					cout << id << " ";
 				cout << endl;
 			}
 		}
@@ -29,13 +29,13 @@ bool ImportMesh(PolygonalMesh& mesh)
     if(!ImportCell1Ds(mesh))
         return false;
 	else{
-		cout << "Cell1D marker:" << endl;
+		cout << "Marker Cell1D:" << endl;
 		if (mesh.MarkerCell1Ds.size() != 0){
 			for(auto it = mesh.MarkerCell1Ds.begin(); it != mesh.MarkerCell1Ds.end(); it++)
 			{
 				cout << "Marker id: " << it -> first << "\t" << "Valori: ";
 				for(const unsigned int id : it -> second)
-					cout << id << "\t";
+					cout << id << " ";
 				cout << endl;
 			}
 		}
@@ -47,13 +47,13 @@ bool ImportMesh(PolygonalMesh& mesh)
     if(!ImportCell2Ds(mesh))
         return false;
 	else{
-		cout << "Cell2D marker:" << endl;
+		cout << "Marker Cell2D:" << endl;
 		if (mesh.MarkerCell2Ds.size() != 0){
 			for(auto it = mesh.MarkerCell2Ds.begin(); it != mesh.MarkerCell2Ds.end(); it++)
 			{
 				cout << "Marker id: " << it -> first << "\t" << "Valori: ";
 				for(const unsigned int id : it -> second)
-					cout << id << "\t";
+					cout << id << " ";
 
 				cout << endl;
 			}
@@ -100,9 +100,9 @@ bool ImportCell0Ds(PolygonalMesh& mesh)
 
         unsigned int id;
         unsigned int marker;
-        char tmp; //variabile temporanea per leggere il separatore ";"
+        char sep; //variabile temporanea per leggere il separatore ";"
 
-        converter >> id >> tmp >> marker >> tmp >> mesh.Cell0DsCoordinates(0, id) >> tmp >> mesh.Cell0DsCoordinates(1, id);
+        converter >> id >> sep >> marker >> sep >> mesh.Cell0DsCoordinates(0, id) >> sep >> mesh.Cell0DsCoordinates(1, id);
 
         mesh.Cell0DsId.push_back(id);
 
@@ -116,7 +116,6 @@ bool ImportCell0Ds(PolygonalMesh& mesh)
             }
             else
             {
-                // mesh.MarkerCell0Ds[marker].push_back(id);
                 it -> second.push_back(id); 
             }
         }
@@ -160,9 +159,9 @@ bool ImportCell1Ds(PolygonalMesh& mesh)
 
         unsigned int id;
         unsigned int marker;
-		char tmp;
+		char sep;
 
-        converter >> id >> tmp >> marker >> tmp >> mesh.Cell1DsExtrema(0, id) >> tmp >> mesh.Cell1DsExtrema(1, id);
+        converter >> id >> sep >> marker >> sep >> mesh.Cell1DsExtrema(0, id) >> sep >> mesh.Cell1DsExtrema(1, id);
 		
         mesh.Cell1DsId.push_back(id);
 
@@ -175,7 +174,6 @@ bool ImportCell1Ds(PolygonalMesh& mesh)
             }
             else
             {
-                // mesh.MarkerCell1Ds[marker].push_back(id);
                 it->second.push_back(id);
             }
         }
@@ -199,8 +197,7 @@ bool ImportCell1Ds(PolygonalMesh& mesh)
 // ***************************************************************************
 bool ImportCell2Ds(PolygonalMesh& mesh)
 {
-    ifstream file;
-    file.open("./Cell2Ds.csv");
+    ifstream file("./Cell2Ds.csv");
 
     if(file.fail())
         return false;
@@ -234,25 +231,28 @@ bool ImportCell2Ds(PolygonalMesh& mesh)
 
         unsigned int id;
 		unsigned int marker;
+		char sep;
+		
 		unsigned int numV;
 		unsigned int vert;
         vector<unsigned int> vertices;
+		
 		unsigned int numE;
 		unsigned int edge;
         vector<unsigned int> edges;
-		char tmp;
+		
 
-        converter >> id >> tmp >> marker >> tmp >> numV;
+        converter >> id >> sep >> marker >> sep >> numV;
 		vertices.reserve(numV);
         for(unsigned int i = 0; i < numV; i++){
-            converter >> tmp >> vert;
+            converter >> sep >> vert;
 			vertices.push_back(vert);
 		}
 		
-		converter >> tmp >> numE;
+		converter >> sep >> numE;
 		edges.reserve(numE);
         for(unsigned int i = 0; i < numE; i++){
-            converter >> tmp >> edge;
+            converter >> sep >> edge;
 			edges.push_back(edge);
 		}
 
@@ -270,7 +270,6 @@ bool ImportCell2Ds(PolygonalMesh& mesh)
             else
             {
                 mesh.MarkerCell2Ds[marker].push_back(id); //si aggiorna il valore della chiave
-                // it->second.push_back(id);
             }
         }
 		

@@ -7,7 +7,7 @@ using namespace std;
 
 namespace PolygonalLibrary
 {
-/*Importazione della polygonal mesh and verifica che la mesh sia corretta
+/*Importazione della polygonal mesh e verifica che la mesh sia corretta
   mesh: PolygonalMesh struct
   restituisce il risultato della lettura, true se ha successo, false altrimenti */
 bool ImportMesh(PolygonalMesh& mesh);
